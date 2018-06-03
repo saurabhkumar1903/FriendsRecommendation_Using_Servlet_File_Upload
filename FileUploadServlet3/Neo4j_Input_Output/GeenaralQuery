@@ -1,0 +1,14 @@
+Query to get all the friends of a specific node id=0:
+MATCH p=(a1:Node {id:"0"})-[r:FRIEND_OF]->() RETURN p LIMIT 25
+
+
+Query to show relationship between a group of nodes
+
+MATCH p=(a1{id:"0"})-[r:FRIEND_OF]->(a2) where a2.id="5" or a2.id="11" RETURN p LIMIT 25
+MATCH p=(a1{id:"0"})-[r:FRIEND_OF]->(a2) where a2.id in ["5","11"] RETURN p LIMIT 25
+
+
+MATCH p=(a1)-[r:FRIEND_OF]->(a2) where a1.id in ["0","11"] and a2.id in ["5","11"] RETURN p LIMIT 25
+
+Query to delete all the data in the database:
+match(n) detach delete (n)

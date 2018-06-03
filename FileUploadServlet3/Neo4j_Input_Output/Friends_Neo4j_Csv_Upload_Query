@@ -1,0 +1,14 @@
+// Load the csv file
+load csv from "file:///home/hadoopuser/Desktop/Neo4j_Input_Output/Friends_Sample_Input_For_Neo4j.csv" as line
+// calculate the indexes from the second column to the last
+with line, range(1, size(line) - 1) as indexes
+// merge (create or assign) the node from first column (0,1,2,3,10)
+merge(a:Node{id:line[0]})
+// pass 'a', 'indexes' and 'line' to the next context
+with a, indexes, line
+// unwind the indexes into single index per row
+unwind indexes as index
+// merge (create or assign) the node from other columns
+merge(b:Node{id:line[index]})
+// merge the relationship between a and b
+merge(a)-[:FRIEND_OF]->(b)

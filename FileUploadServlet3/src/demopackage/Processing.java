@@ -7,10 +7,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 //converting output from hadoop for input in Neo4j Platform
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.amazonaws.Request;
 
 /**
  * Servlet implementation class Processing
@@ -33,7 +37,13 @@ public class Processing extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Output Generated: "+request.getAttribute("output_path"));
+		//RequestDispatcher rd=new RequestDispatcher();
+		//RequestDispatcher rd=request.getRequestDispatcher("http://localhost:7474/browser/");  
+		//rd.forward(
+			//	request, response);
+		response.sendRedirect("http://localhost:7474/browser/");
 	}
 
 	/**

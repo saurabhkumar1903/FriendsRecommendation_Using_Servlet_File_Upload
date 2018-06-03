@@ -5,10 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>File Upload Demo</title>
+<title>File Upload</title>
 </head>
-<body>
+<body background="4.jpg">
 	<center>
+	<p>
+	<p>
+	<br>
 		<form method="post" action="uploadFile" enctype="multipart/form-data">
 			Select file to upload: 
 			<input type="file" name="uploadFile" /> 
